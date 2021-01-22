@@ -1,0 +1,7 @@
+from django.urls import URLPattern,reverse,path
+from . import views
+app_name = 'main'
+urlpatterns=[
+    path("",views.home,name='home'),
+]
+
