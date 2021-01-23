@@ -7,16 +7,16 @@
 <div class="container-fluid">
     <div class="row justify-content-center p-3">
         <div class="w-100 card text-white bg-primary mb-3 p-2 rounded-lg">
-            <div class="card-header" style="font-size:1.8em;">Thống kê</div>
+            <div class="card-header" style="font-size:1rem;">Thống kê</div>
             <div class="body">
-                <p class="card-text">Tổng tiền đã chuyển: <span class="badge badge-light">{{total|parseMoney}}</span></p>
-                <p class="card-text">Lương: <span class="badge badge-info">{{salary|parseMoney}}</span></p>
+                <p class="card-text ">Tổng tiền đã chuyển: <span class="badge badge-light">{{total|parseMoney}}</span></p>
+                <p class="card-text ">Lương: <span class="badge badge-info">{{salary|parseMoney}}</span></p>
             </div>
         </div>
     </div>
     <div class="container-fluid alert mb-3" style="background-color:#393e46;color:#b9ac92;" role="alert">
         <div class="row justify-content-center">
-            <p style="font-size:1.2em;">Chi tiết giao dịch từ ngày 20/10/2019 đến 30/1/2021</p>
+            <p style="font-size:1.5rem;">Chi tiết giao dịch từ ngày 20/10/2019 đến 30/1/2021</p>
         </div>
         {% for bill in bills %}
             <div class="row">
