@@ -8,7 +8,7 @@ def parseMoney(value):
     for i in reversed(range(len(moneyS))):
         res+=moneyS[i]
         cnt+=1
-        if cnt == 3:
+        if cnt == 3 and i!=0:
             res+=","
             cnt = 0
     return res[::-1]

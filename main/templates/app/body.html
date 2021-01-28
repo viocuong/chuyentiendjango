@@ -20,9 +20,18 @@
         </div>
         {% for bill in bills %}
             <div class="row">
-                <div class="alert alert-warning w-100" role="alert">
+                {% comment %} <div class="alert alert-warning w-100" role="alert">
                     Ngày: <span class="badge badge-secondary">{{bill.date}}</span> &nbsp; | &nbsp; Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span>
                     &nbsp; | &nbsp;<a href="#"  onclick="listenClickModel('myModal','myImg','img01','{% static 'app/image/'|add:bill.file_name %}')">Xem ảnh</a>
+                </div>  {% endcomment %}
+                <div class="row alert alert-warning w-100" role="alert">
+                    <div class="col-8">
+                        <p>Ngày: <span class="badge badge-secondary">{{bill.date}}</span> &nbsp; | &nbsp; Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span></p>
+                        <p>Tên</p>
+                    </div>
+                    <div class="col-4 align-content-center">
+                        <a href="#"  onclick="listenClickModel('myModal','myImg','img01','{{bill.url_image}}')">Xem ảnh</a>
+                    </div>
                 </div> 
             </div>
         {% endfor %}
