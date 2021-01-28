@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 from .models import Bill
 from .forms import *
+from .functions.functions import *
 # Create your views here.
 def home(request):
     
@@ -21,13 +22,17 @@ def home(request):
 def add(request):
 
     if request.method == 'POST':
-        addForm = AddForm(request.POST)
+        addForm = AddForm(request.POST,request.FILES)
         if addForm.is_valid():
             data = addForm.cleaned_data
             bill = Bill()
-            bill.setF(data['money'],data['date'],data['url_image'])
+            
+            bill.setF(data['money'],data['date'])
+            bill.image = request.FILES['image']
+            bill.url_image = bill.image.url
             if len(Bill.objects.filter(url_image=bill.url_image)):
                 return HttpResponse("Image is exist")
+            #handle_uploaded_file(request.FILES['image'])
             bill.save()
         return HttpResponseRedirect(reverse('main:home'))
 

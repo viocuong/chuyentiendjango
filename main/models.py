@@ -5,11 +5,12 @@ class Bill(models.Model):
     money = models.IntegerField()
     date = models.CharField(max_length=200)
     url_image = models.CharField(max_length=1000)
-    def setF(self,money, date, url):
+    image = models.FileField(upload_to='app/image')
+    def setF(self,money, date):
         self.money = money
         self.date = date
-        self.url_image = url
+      
     def __str__(self):
-        return f"{self.money} | {self.date} | {self.url_image}"
+        return f"{self.money} | {self.date} "
 
 

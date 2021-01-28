@@ -7,7 +7,7 @@
             <p style="font_size:1.5em;color:#ffffff;">Thêm chi tiết thanh toán</p>
         </div>
         
-        <form action="{% url 'main:add' %}" method="post">
+        <form action="{% url 'main:add' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{form|crispy}}
             <button type="submit" class="btn btn-primary">Thêm</button>

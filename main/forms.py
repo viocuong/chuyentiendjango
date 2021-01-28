@@ -1,8 +1,9 @@
 from django import forms
 from .models import *
 class AddForm(forms.ModelForm):
-    
+   
     class Meta:
+
         model = Bill
-        fields = ['money','date','url_image']
+        fields = ['money','date','image']
 
