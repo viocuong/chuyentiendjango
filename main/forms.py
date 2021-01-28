@@ -5,5 +5,5 @@ class AddForm(forms.ModelForm):
     class Meta:
 
         model = Bill
-        fields = ['money','date','image']
+        fields = ['name','money','date','image']
 

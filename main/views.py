@@ -27,7 +27,7 @@ def add(request):
             data = addForm.cleaned_data
             bill = Bill()
             
-            bill.setF(data['money'],data['date'])
+            bill.setF(data['money'],data['date'],name=data['name'])
             bill.image = request.FILES['image']
             bill.url_image = bill.image.url
             if len(Bill.objects.filter(url_image=bill.url_image)):

@@ -7,10 +7,11 @@
 <div class="container-fluid">
     <div class="row justify-content-center p-3">
         <div class="w-100 card text-white bg-primary mb-3 p-2 rounded-lg">
-            <div class="card-header w-100" style="align-self:center;">Thống kê</div>
-            <div class="body">
-                <p class="card-text ">Tổng tiền đã chuyển: <span class="badge badge-light">{{total|parseMoney}}</span></p>
-                <p class="card-text ">Lương: <span class="badge badge-info">{{salary|parseMoney}}</span></p>
+            <div class="card-header w-100 " style="align-self:center;">Thống kê</div>
+            <div class="body d-flex flex-column">
+                <p class="card-text">Tổng tiền đã chuyển: <span class="badge badge-light">{{total|parseMoney}}</span></p>
+                <p class="card-text">Tổng số giao dịch: <span class="badge badge-success">{{bills|length}}</span></p>
+                <p class="card-text">Lương: <span class="badge badge-info">{{salary|parseMoney}}</span></p>
             </div>
         </div>
     </div>
@@ -18,23 +19,25 @@
         <div class="row justify-content-center">
             <p style="font-size:1.8rem;">Chi tiết giao dịch từ ngày 20/10/2019 đến 30/1/2021</p>
         </div>
-        {% for bill in bills %}
-            <div class="row">
+        <div class="container-fluid p-0 m-0" >
+            {% for bill in bills %}
+           
                 {% comment %} <div class="alert alert-warning w-100" role="alert">
                     Ngày: <span class="badge badge-secondary">{{bill.date}}</span> &nbsp; | &nbsp; Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span>
                     &nbsp; | &nbsp;<a href="#"  onclick="listenClickModel('myModal','myImg','img01','{% static 'app/image/'|add:bill.file_name %}')">Xem ảnh</a>
                 </div>  {% endcomment %}
-                <div class="row alert alert-warning w-100" role="alert">
-                    <div class="col-8">
+                <div class="row alert alert-warning w-100 m-0" role="alert">
+                    <div class="col-8 border-right border-danger">
                         <p>Ngày: <span class="badge badge-secondary">{{bill.date}}</span> &nbsp; | &nbsp; Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span></p>
-                        <p>Tên</p>
+                        <p>Tên: <span style="font-weight:bold;">{{bill.name}}</span></p>
                     </div>
                     <div class="col-4 align-content-center">
                         <a href="#"  onclick="listenClickModel('myModal','myImg','img01','{{bill.url_image}}')">Xem ảnh</a>
                     </div>
                 </div> 
-            </div>
-        {% endfor %}
+           
+            {% endfor %}
+        </div>
     </div>
     </div>
     
