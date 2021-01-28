@@ -5,7 +5,7 @@ class Bill(models.Model):
     money = models.IntegerField()
     date = models.CharField(max_length=200)
     url_image = models.CharField(max_length=1000)
-    image = models.FileField(upload_to='app/image')
+    image = models.FileField()
     def setF(self,money, date):
         self.money = money
         self.date = date
