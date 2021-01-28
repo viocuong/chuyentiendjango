@@ -9,9 +9,10 @@
         <div class="w-100 card text-white bg-primary mb-3 p-2 rounded-lg">
             <div class="card-header w-100 " style="align-self:center;">Thống kê</div>
             <div class="body d-flex flex-column">
-                <p class="card-text">Tổng tiền đã chuyển: <span class="badge badge-light">{{total|parseMoney}}</span></p>
+                <p class="card-text">Tổng tiền đã chuyển: <span class="badge badge-light">{{total|parseMoney}} &#8363;</span></p>
                 <p class="card-text">Tổng số giao dịch: <span class="badge badge-success">{{bills|length}}</span></p>
-                <p class="card-text">Lương: <span class="badge badge-info">{{salary|parseMoney}}</span></p>
+                <p>Tỉ lệ: 22.765.000 &#8363; = 60.000 &#8363;</p>
+                <p class="card-text">Lương: <span class="badge badge-info">{{salary|parseMoney}} &#8363;</span></p>
             </div>
         </div>
     </div>
@@ -26,7 +27,7 @@
                     Ngày: <span class="badge badge-secondary">{{bill.date}}</span> &nbsp; | &nbsp; Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span>
                     &nbsp; | &nbsp;<a href="#"  onclick="listenClickModel('myModal','myImg','img01','{% static 'app/image/'|add:bill.file_name %}')">Xem ảnh</a>
                 </div>  {% endcomment %}
-                <div class="row alert alert-warning w-100 m-0" role="alert">
+                <div class="row alert alert-warning w-100 m-0 mb-2" role="alert">
                     <div class="col-8 border-right border-danger">
                         <p>Ngày: <span class="badge badge-secondary">{{bill.date}}</span> &nbsp; | &nbsp; Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span></p>
                         <p>Tên: <span style="font-weight:bold;">{{bill.name}}</span></p>
