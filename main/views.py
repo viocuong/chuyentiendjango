@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.urls import reverse
 from .models import Bill
+from django.db.models import Q
 from .forms import *
 from .functions.functions import *
 # Create your views here.
@@ -22,6 +23,7 @@ def home(request):
 def add(request):
 
     if request.method == 'POST':
+        
         addForm = AddForm(request.POST,request.FILES)
         if addForm.is_valid():
             data = addForm.cleaned_data
@@ -35,8 +37,22 @@ def add(request):
             #handle_uploaded_file(request.FILES['image'])
             bill.save()
         return HttpResponseRedirect(reverse('main:home'))
-
     form = AddForm()
     return render(request,'app/add.html',{
         'form':form
     })
+def search(request):
+    
+    if request.is_ajax() or request.method == "GET":
+        key = request.GET['key']
+        if key.isnumeric():
+            listBill = list(Bill.objects.filter(money__contains=key))
+        else: listBill = list(Bill.objects.filter(Q(name__contains=key)| Q(date__contains=key)))
+        
+        sorted(listBill, key=lambda d: d.id,reverse=True)
+        return render(request,'app/search.html',{
+            'bills':listBill,
+            
+        })
+    else:
+        return HttpResponse("no")

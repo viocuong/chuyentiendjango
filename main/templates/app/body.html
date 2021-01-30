@@ -13,21 +13,32 @@
                 <p class="card-text">Tổng số giao dịch: <span class="badge badge-success">{{bills|length}}</span></p>
                 <p>Tỉ lệ: 22.765.000 &#8363; = 60.000 &#8363;</p>
                 <p class="card-text">Lương: <span class="badge badge-info">{{salary|parseMoney}} &#8363;</span></p>
+                <a href="{% url 'main:add' %}" class="btn btn-success">Add</a>
             </div>
         </div>
     </div>
     <div class="container-fluid alert mb-3" style="background-color:#393e46;color:#b9ac92;" role="alert">
-        <div class="row justify-content-center">
-            <p style="font-size:1.8rem;">Chi tiết giao dịch từ ngày 20/10/2019 đến 30/1/2021</p>
+        <div class="row justify-content-center pt-5">
+            
+            <div class="search-container">
+                <form action="#" method="get">
+                {% csrf_token %}
+                    <input id="search-input" type="text" placeholder="Tìm kiếm.." name="key">
+                    
+                </form>
+            </div>
         </div>
-        <div class="container-fluid p-0 m-0" >
+        <div class="row mt-5 justify-content-center">
+                <p style="font-size:1.8rem;">Chi tiết giao dịch từ ngày 02/05/2019 đến 30/1/2021</p>
+            </div>
+        <div class="container-fluid p-0 m-0" id="list_bill">
             {% for bill in bills %}
            
                 {% comment %} <div class="alert alert-warning w-100" role="alert">
                     Ngày: <span class="badge badge-secondary">{{bill.date}}</span> &nbsp; | &nbsp; Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span>
                     &nbsp; | &nbsp;<a href="#"  onclick="listenClickModel('myModal','myImg','img01','{% static 'app/image/'|add:bill.file_name %}')">Xem ảnh</a>
                 </div>  {% endcomment %}
-                <div class="row alert alert-warning w-100 m-0 mb-2" role="alert">
+                <div class="row alert alert-warning w-100 m-0 mb-2 dt_bill" role="alert">
                     <div class="col-8 border-right border-danger">
                         <p>Ngày: <span class="badge badge-secondary">{{bill.date}}</span> &nbsp; | &nbsp; Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span></p>
                         <p>Tên: <span style="font-weight:bold;">{{bill.name}}</span></p>
@@ -43,11 +54,31 @@
     </div>
     
 </div>
+
 <div id="myModal" class="modal">
   <span class="close" onclick="closeModel('myModal')">&times;</span>
   <img class="modal-content" id="img01">
   <div id="caption"></div>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#search-input").keyup(function() {
+            var key = $(this).val();
+            
+            $.ajax({
+                type: "GET",
+                data:{key:key},
+                url: "{% url 'main:search' %}",
+                success: function (response) {
+                    $("#list_bill").html(response);
+
+                },
+                
+            });
+        });
+    });
+</script>
 <img id="myImg" src="" alt="Snow" style="width:100%;max-width:300px;display:none;">
+<script type="text/javascript" src="{% static 'app/js/search.js' %}" async></script>
 <script type="text/javascript" src="{% static 'app/js/image_models.js' %}" async></script>
 {% endblock content %}
