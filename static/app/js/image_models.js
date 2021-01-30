@@ -11,3 +11,15 @@ function closeModel(idModel) {
     let model = document.getElementById(idModel);
     model.style.display = "none";
 }
+$(document).ready(function() {
+    var c = document.getElementsByClassName("dt_bill");
+    if (c.length <= 1) {
+        $("body").css({
+            "width": "100%",
+            "height": "100%",
+            "background-attachment": "fixed"
+        });
+    } else {
+        $("body").css({});
+    }
+});
