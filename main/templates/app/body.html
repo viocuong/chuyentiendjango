@@ -3,8 +3,8 @@
 {% load static %}
 {% load functions %}
 {% block content %}
-
-<div class="container-fluid">
+<div class="" id="loader"></div>
+<div class="container-fluid" id="main_body">
     <div class="row justify-content-center p-3">
         <div class="w-100 card text-white bg-primary mb-3 p-2 rounded-lg">
             <div class="card-header w-100 " style="align-self:center;">Thống kê</div>
@@ -109,7 +109,8 @@
         });
         $("#option").change(function(){
             var val = $(this).val();
-            
+            $("#main_body").css({opacity:0.6});
+            $("#loader").addClass("loader");
             $.ajax({
                 type: "GET",
                 data:{selectVal:val},

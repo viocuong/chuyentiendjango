@@ -24,5 +24,12 @@
             <a href="#"  onclick="listenClickModel('myModal','myImg','img01','{{bill.url_image}}')">Xem ảnh</a>
         </div>
     </div> 
-           
+    
 {% endfor %}
+<script>
+    $(document).ready(function(){
+        
+        $("#loader").removeClass( "loader" );
+        $("#main_body").css({opacity:1});
+    });
+</script>
