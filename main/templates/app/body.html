@@ -18,13 +18,13 @@
         </div>
     </div>
     <div class="container-fluid alert mb-3" style="background-color:#393e46;color:#b9ac92;" role="alert">
-        <div class="row justify-content-center pt-5">
+        <div class="row w-100 justify-content-center pt-5">
             
-            <div class="search-container">
+            <div class="search-container w-100">
                 <form action="#" method="get">
                 {% csrf_token %}
-                    <input id="search-input" type="text" placeholder="Tìm kiếm.." name="key">
-                    
+                    <input class="w-100" id="search-input" type="text" placeholder="Tìm kiếm theo (tên, ngày, số tiền)" name="key">
+                
                 </form>
             </div>
         </div>
@@ -40,7 +40,8 @@
                 </div>  {% endcomment %}
                 <div class="row alert alert-warning w-100 m-0 mb-2 dt_bill" role="alert">
                     <div class="col-8 border-right border-danger">
-                        <p>Ngày: <span class="badge badge-secondary">{{bill.date}}</span> &nbsp; | &nbsp; Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span></p>
+                        <p>Ngày: <span class="badge badge-secondary">{{bill.date}}</span></p>
+                        <p>Số tiền: <span class="badge badge-success">{{bill.money|parseMoney}}</span></p>
                         <p>Tên: <span style="font-weight:bold;">{{bill.name}}</span></p>
                     </div>
                     <div class="col-4 align-content-center">
