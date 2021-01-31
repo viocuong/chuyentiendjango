@@ -1,5 +1,14 @@
 {% load static %}
 {% load functions %}
+<div class="row justify-content-center">
+    <p style="font-size:1.8rem;">Chi tiết các giao dịch {{content}}</p>
+</div>
+{% if byMonth %}
+    <p>Tổng tiền chuyển {{content}}: <span class="badge badge-light">{{totalMoney|parseMoney}} &#8363;</span></p>
+    <p>Tổng số lần chuyển {{content}}: <span class="badge badge-light">{{totalBill}} </span></p>
+    <p>Lương {{content}}: <span class="badge badge-light">{{salaryInMonth|parseMoney}} &#8363;</span></p>
+{% else %}
+{% endif %}
 {% for bill in bills %}
            
     {% comment %} <div class="alert alert-warning w-100" role="alert">

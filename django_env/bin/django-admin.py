@@ -1,4 +1,4 @@
-#!/home/ubuntu/project/chuyentiendjango/django_env/bin/python3
+#!/home/cuongnv/projects/chuyentiendjango/django_env/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

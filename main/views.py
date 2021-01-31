@@ -48,11 +48,37 @@ def search(request):
         if key.isnumeric():
             listBill = list(Bill.objects.filter(money__contains=key))
         else: listBill = list(Bill.objects.filter(Q(name__contains=key)| Q(date__contains=key)))
-        
+        content = f"có từ khóa tìm kiếm '{key}'"
+        if key == "":
+            content = "từ 2/5/2019 đến 30/1/2021"
         sorted(listBill, key=lambda d: d.id,reverse=True)
         return render(request,'app/search.html',{
             'bills':listBill,
+            'byMonth':False,
+            'content': content
             
         })
     else:
         return HttpResponse("no")
+def searchbymonth(request):
+    salaryInMonth = totalBill =totalMoney = 0 
+    if request.method == "GET":
+        key = request.GET['selectVal']
+        print(key)
+        listBill = list(Bill.objects.filter(date__contains=key))
+        sorted(listBill, key=lambda d: d.id,reverse=True)
+        content = f"trong tháng {key}"
+
+        totalBill = len(listBill)
+        totalMoney = int(sum(int(b.money) for b in listBill))
+        salaryInMonth = (totalMoney*60)//22765000
+        return render(request,'app/search.html',{
+            'byMonth':True,
+            'bills':listBill,
+            'content':content,
+            'totalMoney': totalMoney,
+            'totalBill':totalBill,
+            'salaryInMonth':salaryInMonth
+        })
+    else:
+        return HttpResponse("method not allow")
