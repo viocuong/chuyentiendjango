@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {'location': '/home/ubuntu/backups'}
+#DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+#DBBACKUP_STORAGE_OPTIONS = {'location': '/home/ubuntu/backups'}
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
