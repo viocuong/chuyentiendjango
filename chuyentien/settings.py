@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['cuongnv.xyz']
 # Application definition
 
 INSTALLED_APPS = [
-    'dbbackup', 
+    
     'crispy_forms',
     'main',
     'django.contrib.admin',
