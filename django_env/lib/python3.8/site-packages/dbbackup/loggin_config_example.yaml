@@ -1,0 +1,42 @@
+# loggin_config.yaml
+
+# logging.debug('This is a debug message')
+# logging.info('This is an info message')
+# logging.warning('This is a warning message')
+# logging.error('This is an error message')
+# logging.critical('This is a critical message')
+
+
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s %(name)-24s %(levelname)-24s %(message)s'
+    datefmt: '%d-%m-%Y %H:%M'
+
+loggers:
+  root:
+    handlers: [smtp,console]
+    propagate: no
+
+root:
+  level: DEBUG
+  handlers: [smtp,console]
+
+handlers:
+  smtp:
+    # domain: mydomain.org
+    class: logging.handlers.SMTPHandler
+    level: ERROR
+    formatter: simple
+    mailhost: [server, port]
+    fromaddr: contact@domain
+    toaddrs: contact@anotherdomain
+    subject: dbbackup ERROR
+    credentials: [user, password]
+
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: simple
+    stream: ext://sys.stdout
+
