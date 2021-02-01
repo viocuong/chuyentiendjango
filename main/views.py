@@ -71,7 +71,7 @@ def searchbymonth(request):
 
         totalBill = len(listBill)
         totalMoney = int(sum(int(b.money) for b in listBill))
-        salaryInMonth = (totalMoney*60)//22765000
+        salaryInMonth = (totalMoney*60000)//22765000
         return render(request,'app/search.html',{
             'byMonth':True,
             'bills':listBill,
